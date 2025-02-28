@@ -17,8 +17,7 @@
   background: var(--primary);
 }
 
-.noto-sans-arabic {
-}
+
 * {
   margin: 0;
   padding: 0;
@@ -440,4 +439,41 @@ tr {
 .customer_deleted{
   background-color: rgb(194, 194, 194);
   color: white;
+}
+
+@media (max-width: 450px){
+  .container{
+    width: 100%;
+  }
+  .bodycon{
+    display: flex;
+    flex-direction: column;
+  }
+  .add_item{
+    width: 100%;
+  }
+  .homeBill_header{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
+    order: 1;
+  }
+  .homeBill{
+    width: 100%;
+
+  }
+  #save_home{
+    order: -1;
+    margin-top: 5px;
+    text-align: center;
+    text-justify: center;
+  }
+  #datetime{
+    display: none;
+  }
+  #homeBill_header{
+    order: 2;
+  }
+
 }
