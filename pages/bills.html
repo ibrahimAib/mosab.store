@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بسطة مصعب</title>
+    <link rel="icon" type="image/x-icon" href="/logo.png">
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=schedule" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="header" dir="ltr">
+            <div class="logo">
+                <a href="/index.html">
+                    <img src="/logo.png" alt="Logo" width="100px">
+                </a>
+            </div>
+            <nav class="nav">
+                <a href="/pages/customer.html" class="nav-link">العملاء</a>
+                <a href="/pages/prodoct.html" class="nav-link">المنتجات</a>
+                <a href="/pages/bills.html" class="nav-link nav-selected">الفواتير</a>
+                <a href="/index.html" class="nav-link">البيع</a>
+            </nav>
+        </div>
+        <div style="height: 9px;"></div>
+        <div class="bodycon extra centerer">
+
+            <div class="homeBill">
+                <div class="otherBill_header">
+
+                    <input class="text_intput datetimeinput" type="datetime" name="" id="datetime">
+                </div>
+                <hr>
+                <div class="homeBill_content extra">
+                    <div>
+                        <table class="bill_table_titles" id="bills">
+
+                        </table>
+                    </div>
+                </div>
+
+                <hr>
+
+            </div>
+        </div>
+    </div>
+    <script src="/js/bills.js"></script>
+    <script>
+        //add time
+        var now = new Date();
+        var datetime = now.toLocaleString();
+        document.getElementById("datetime").placeholder = datetime;
+        function printt() {
+            console.log('changed');
+        }
+    </script>
+</body>
+
+</html>
