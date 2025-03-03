@@ -91,9 +91,9 @@ async function renderBills() {
                 <span>ريال</span>
             </td>
             <td>
-            <button class="text_intput text_input_small mr-t ${bill['paid'] == 0 ? 'btn-del' : 'btn-update'} ${bill['customer'] == 'العميل محذوف' ? 'customer_deleted' : ''}" onclick="paymentUpdata(${bill['id']},${bill['paid']})">
+            <button class="text_intput number_input_small mr-t ${bill['paid'] == 0 ? 'btn-del' : 'btn-update'} ${bill['customer'] == 'العميل محذوف' ? 'customer_deleted' : ''}" onclick="paymentUpdata(${bill['id']},${bill['paid']})">
                 <span id="waiting${bill['id']}" class="material-symbols-outlined icon_btn_bill " style="display: none;">schedule</span>
-                <span id="state${bill['id']}" class="icon_btn_bill"> ${bill['paid'] == 0 ? 'دفع': 'تم'}</span>
+                <span id="state${bill['id']}" class="icon_btn_bill "> ${bill['paid'] == 0 ? 'دفع': 'تم'}</span>
             </button>
             </td>
             </tr>`;

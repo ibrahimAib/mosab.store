@@ -335,8 +335,8 @@ tr {
 }
 .icon_btn_bill{
   color: white;
-
 }
+
 
 .btn-pro {
   width: 30px;
@@ -473,7 +473,6 @@ tr {
     padding-top: 10px;
     width: 100%;
     margin-top: 10px;
-    border-top: solid 1px rgba(63, 54, 33, 0.308);
   }
   #save_home{
     order: -1;
@@ -490,8 +489,15 @@ tr {
   .bill_table_titles{
     min-width: 600px;
   }
+  .bill_table_titles thead {
+    position: sticky;
+    top: 0;
+    background: #faeab7; /* Ensure headers remain visible */
+    z-index: 10;
+    box-shadow: 2px 2px 5px 2px #b6a56e3b;
+  }
   #overAll{
-    max-width: 50px;
+    max-width: 60px;
   }
   .save_btn{
     max-width: 50px;

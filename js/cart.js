@@ -168,17 +168,20 @@ function renderCart() {
     let HTMLtable = '';
     let overAll = 0;
         HTMLtable = `
-        <tr>
-            <th>المنتج</th>
-            <th>العدد</th>
-            <th>السعر</th>
-            <th>المجموع</th>
-            <th>---</th>
-        </tr>
-                        `
+        <thead>
+            <tr>
+                <th>المنتج</th>
+                <th>العدد</th>
+                <th>السعر</th>
+                <th>المجموع</th>
+                <th>---</th>
+            </tr>
+        </thead>
+`
     for (let i = 0; i < cart.length; i++) {
         let ide = 'id' + i;
         HTMLtable += `
+
         <tr>
             <td><input class="text_intput text_input_small" type="text" value="${cart[i].title}"></input></td>
             <td><input class="text_intput number_input_small mr-t" id="${ide}" onchange="amoutnUpdataCart(${i})" min="1" type="number" value="${cart[i].add_amount || 0}"></td>
