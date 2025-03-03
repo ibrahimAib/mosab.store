@@ -141,7 +141,7 @@ body {
   box-shadow: 2px 2px 5px 0px #6b55254f;
   margin-top: 5px;
   border-radius: 10px;
-  max-width: 200px;
+  max-width: 170px;
   text-align: center;
 }
 
@@ -194,7 +194,6 @@ body {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  overflow: scroll;
 }
 
 .homeBill_header {
@@ -214,6 +213,7 @@ hr {
 .datetimeinput {
   text-align: center;
   font-size: 12px;
+  width: 130px;
 }
 
 table {
@@ -440,6 +440,9 @@ tr {
   color: white;
 }
 
+#overAll{
+  width: 70px;
+}
 @media (max-width: 650px){
   .container{
     width: 100%;
@@ -540,3 +543,4 @@ tr {
     height: 400px;
   }
 }
+
