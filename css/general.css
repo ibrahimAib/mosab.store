@@ -194,7 +194,7 @@ body {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  overflow: auto;
+  overflow: scroll;
 }
 
 .homeBill_header {
@@ -450,11 +450,11 @@ tr {
   .bodycon{
     display: flex;
     flex-direction: column;
-    height: 70vh;
+    height: 30vh;
     padding: 0 10px;
 
-    overflow-y: scroll;
-    overflow-x: hidden;
+    /* overflow-y: scroll;
+    overflow-x: hidden; */
     
   }
   .add_item{

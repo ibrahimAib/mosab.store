@@ -100,23 +100,23 @@ function renderproducts() {
                 <tr>
                     <form id="updateProductForm${products[i]['id']}">
                         <td>
-                            <input class="text_intput " id="title${i}" type="text" value="${products[i]['title']}" name="title">
+                            <input class="text_intput text_input_small" id="title${i}" type="text" value="${products[i]['title']}" name="title">
                         </td>
 
                         <td>
-                            <input class="text_intput  mr-t" id="sn${i}" type="number" value="${products[i]['sn']}" name="sn">
+                            <input class="text_intput text_input_small  mr-t" id="sn${i}" type="number" value="${products[i]['sn']}" name="sn">
                         </td>
 
                         <td>
-                            <input class="text_intput  mr-t" id="category${i}" type="text" value="${products[i]['category']}" name="category">
+                            <input class="text_intput text_input_small  mr-t" id="category${i}" type="text" value="${products[i]['category']}" name="category">
                         </td>
 
                         <td>
-                            <input class="text_intput text_input_small mr-t" id="stock${i}" type="number" value="${products[i]['stock']}" name="stock">
+                            <input class="text_intput number_input_small mr-t" id="stock${i}" type="number" value="${products[i]['stock']}" name="stock">
                         </td>
 
                         <td>
-                            <input class="text_intput text_input_small mr-t" type="number" id="price${i}" value="${products[i]['price']}" name="price">
+                            <input class="text_intput number_input_small mr-t" type="number" id="price${i}" value="${products[i]['price']}" name="price">
                         </td>
 
                         <td>
