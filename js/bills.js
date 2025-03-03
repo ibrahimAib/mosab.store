@@ -77,17 +77,19 @@ async function renderBills() {
     document.getElementById('bills').innerHTML = '';
 
     HTMLtable = `
-    <tr>
-    <th>العميل</th>
-    <th>المجموع</th>
-    <th>حالة الدفع</th>
-    </tr>`;
+    <thead>
+        <tr>
+            <th>العميل</th>
+            <th>المجموع</th>
+            <th>حالة الدفع</th>
+        </tr>
+    </thead>`;
     bills.slice().reverse().forEach(bill => {
         HTMLtable += `
         <tr>
-            <td><input type="text" class="text_intput ${bill['customer'] == 'العميل محذوف' ? 'customer_deleted' : ''} " value="${bill['customer']}" readonly></td>
+            <td><input type="text" class="text_intput text_input_small ${bill['customer'] == 'العميل محذوف' ? 'customer_deleted' : ''} " value="${bill['customer']}" readonly></td>
             <td class="td_price">
-                <input class="text_intput text_input_small mr-t ${bill['customer'] == 'العميل محذوف' ? 'customer_deleted' : ''}" type="text" value="${bill['overAll']}" readonly>
+                <input class="text_intput number_input_small mr-t ${bill['customer'] == 'العميل محذوف' ? 'customer_deleted' : ''}" type="text" value="${bill['overAll']}" readonly>
                 <span>ريال</span>
             </td>
             <td>

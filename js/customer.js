@@ -71,13 +71,14 @@ function add_product(){
 function rendercustomer() {
     HTMLtable = '';
     if(document.getElementById('customers')){
-        HTMLtable = `                        
-        <tr>
-            <th>الاسم</th>
-            <th>الهاتف</th>
- 
-            <th>----</th>
-        </tr>`;
+        HTMLtable = ` 
+        <thead>                       
+            <tr>
+                <th>الاسم</th>
+                <th>الهاتف</th>
+                <th>----</th>
+            </tr>
+        </thead>`;
         console.log(customers)
         for(i = 0; i < customers.length; i++){
 
@@ -120,21 +121,23 @@ async function getData() {
         let HTMLtable = '';
         if (document.getElementById('customers')) {
             HTMLtable = `
+            <thead>
                 <tr>
                     <th>الاسم</th>
                     <th>الجوال</th>
                     <th>----</th>
-                </tr>`;
+                </tr>
+            </thead>`;
             for (let i = 0; i < customers.length; i++) {
                 HTMLtable += `
                 <tr>
                     <form id="updateCustomerForm${customers[i]['id']}">
                         <td>
-                            <input class="text_intput" id="name${i}" type="text" value="${customers[i]['name']}" name="name">
+                            <input class="text_intput text_input_small" id="name${i}" type="text" value="${customers[i]['name']}" name="name">
                         </td>
 
                         <td>
-                            <input class="text_intput  mr-t" id="phone${i}" type="number" value="${customers[i]['phone']}" name="phone">
+                            <input class="text_intput text_input_small mr-t" id="phone${i}" type="number" value="${customers[i]['phone']}" name="phone">
                         </td>
 
 

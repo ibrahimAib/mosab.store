@@ -85,15 +85,17 @@ function add_product(){
 function renderproducts() {
     HTMLtable = '';
     if(document.getElementById('products')){
-        HTMLtable = `                        
-        <tr>
-            <th>المنتج</th>
-            <th>sn</th>
-            <th>التصنيف</th>
-            <th>المخزون</th>
-            <th>السعر</th>
-            <th>----</th>
-        </tr>`;
+        HTMLtable = `    
+        <thead>                    
+            <tr>
+                <th>المنتج</th>
+                <th>sn</th>
+                <th>التصنيف</th>
+                <th>المخزون</th>
+                <th>السعر</th>
+                <th>----</th>
+            </tr>
+        </thead>`;
         for(i = 0; i < products.length; i++){
 
             HTMLtable += `
@@ -146,6 +148,7 @@ async function getData() {
         let HTMLtable = '';
         if (document.getElementById('products')) {
             HTMLtable = `
+            <thead>
                 <tr>
                     <th>المنتج</th>
                     <th>sn</th>
@@ -153,7 +156,8 @@ async function getData() {
                     <th>المخزون</th>
                     <th>السعر</th>
                     <th>----</th>
-                </tr>`;
+                </tr>
+            </thead>`;
 
             for (let i = 0; i < products.length; i++) {
                 HTMLtable += `

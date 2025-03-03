@@ -487,7 +487,7 @@ tr {
     order: 2;
   }
   .bill_table_titles{
-    min-width: 600px;
+    min-width: 550px;
   }
   .bill_table_titles thead {
     position: sticky;
@@ -519,4 +519,13 @@ tr {
     max-width: 50px;
   }
 
+  .bills_table{
+    min-width: 300px;
+  }
+  .cart_table{
+    min-width: 420px;
+  }
+  .customers_table{
+    min-width: 330px;
+  }
 }
