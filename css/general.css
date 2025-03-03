@@ -102,7 +102,6 @@ body {
 }
 .extra {
   height: 85vh;
-  width: 100%;
 }
 .pro_extra {
   height: 83vh;
@@ -448,20 +447,29 @@ tr {
   .bodycon{
     display: flex;
     flex-direction: column;
+    height: 70vh;
+    padding: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    
   }
   .add_item{
     width: 100%;
   }
   .homeBill_header{
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 20px; */
     order: 1;
+    /* min-width: 650px; */
+    padding: 0 5px;
   }
   .homeBill{
+    padding-top: 10px;
     width: 100%;
-
+    margin-top: 10px;
+    border-top: solid 1px rgba(63, 54, 33, 0.308);
   }
   #save_home{
     order: -1;
@@ -474,6 +482,24 @@ tr {
   }
   #homeBill_header{
     order: 2;
+  }
+  .bill_table_titles{
+    min-width: 600px;
+  }
+  #overAll{
+    max-width: 50px;
+  }
+  .save_btn{
+    max-width: 50px;
+  }
+  .logo{
+    display: none;
+  }
+  .header {
+    background-color: var(--primary);
+    align-items: center;
+    justify-content:center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
 
 }
