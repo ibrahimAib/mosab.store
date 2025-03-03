@@ -485,7 +485,7 @@ tr {
   }
   #homeBill_header{
     order: 2;
-    min-width: 400px;
+    min-width: 390px;
   }
   .bill_table_titles{
     min-width: 550px;
@@ -534,9 +534,9 @@ tr {
     min-width: 330px;
   }
   .homeBill_content_customers{
-    height: 600px;
+    height: 500px;
   }
   .homeBill_content_products{
-    height: 500px;
+    height: 400px;
   }
 }
