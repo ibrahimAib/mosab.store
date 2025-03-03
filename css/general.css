@@ -221,7 +221,7 @@ table {
   width: 100%;
   border-collapse: collapse;
 }
-.text_input_small {
+.number_input_small {
   width: 60px;
 }
 
@@ -444,11 +444,15 @@ tr {
   .container{
     width: 100%;
   }
+  ::-webkit-scrollbar {
+    display: none;
+  }
   .bodycon{
     display: flex;
     flex-direction: column;
     height: 70vh;
-    padding: 0;
+    padding: 0 10px;
+
     overflow-y: scroll;
     overflow-x: hidden;
     
@@ -500,6 +504,13 @@ tr {
     align-items: center;
     justify-content:center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 0 5px;
+  }
+  .text_input_small{
+    max-width: 120px;
+  }
+  .number_input_small{
+    max-width: 50px;
   }
 
 }

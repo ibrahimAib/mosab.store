@@ -180,18 +180,18 @@ function renderCart() {
         let ide = 'id' + i;
         HTMLtable += `
         <tr>
-            <td><input class="text_intput" type="text" value="${cart[i].title}"></input></td>
-            <td><input class="text_intput text_input_small mr-t" id="${ide}" onchange="amoutnUpdataCart(${i})" min="1" type="number" value="${cart[i].add_amount || 0}"></td>
+            <td><input class="text_intput text_input_small" type="text" value="${cart[i].title}"></input></td>
+            <td><input class="text_intput number_input_small mr-t" id="${ide}" onchange="amoutnUpdataCart(${i})" min="1" type="number" value="${cart[i].add_amount || 0}"></td>
             <td>
-            <input class="text_intput text_input_small mr-t " type="number" value="${cart[i].price}" readonly>
+            <input class="text_intput number_input_small mr-t " type="number" value="${cart[i].price}" readonly>
                 <span >ريال</span>
             </td>
             <td>
-                <input class="text_intput text_input_small mr-t " type="number" value="${cart[i].sum}" readonly>
+                <input class="text_intput number_input_small mr-t " type="number" value="${cart[i].sum}" readonly>
                 <span>ريال</span>
             </td>
             <td>
-                <input class="text_intput text_input_small mr-t btn-del " type="button" value="حذف" onclick="remove(${i})">
+                <input class="text_intput number_input_small mr-t btn-del " type="button" value="حذف" onclick="remove(${i})">
             </td>
         </tr>`;
         overAll += cart[i].sum;
