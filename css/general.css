@@ -453,11 +453,10 @@ tr {
   .bodycon{
     display: flex;
     flex-direction: column;
-    height: 30vh;
+    height: 80vh;
     padding: 0 10px;
 
-    /* overflow-y: scroll;
-    overflow-x: hidden; */
+    /* overflow-x: hidden; */
     
   }
   .add_item{
@@ -471,11 +470,17 @@ tr {
     order: 1;
     /* min-width: 650px; */
     padding: 0 5px;
+    
   }
   .homeBill{
     padding-top: 10px;
     width: 100%;
     margin-top: 10px;
+  }
+
+  .homeBill_content{
+    overflow: auto;
+
   }
   #save_home{
     order: -1;
@@ -488,7 +493,7 @@ tr {
   }
   #homeBill_header{
     order: 2;
-    min-width: 370px;
+    min-width: 330px;
   }
   .bill_table_titles{
     min-width: 550px;
