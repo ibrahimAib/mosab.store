@@ -458,6 +458,9 @@ tr {
   ::-webkit-scrollbar {
     display: none;
   }
+  #banner{
+    display: none;
+  }
   .bodycon{
     display: flex;
     flex-direction: column;
