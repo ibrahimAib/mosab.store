@@ -1,7 +1,7 @@
 let bills;
 let billUrl = 'https://green-gnu-332746.hostingersite.com/api/v1/bills';
 let cartUrl = 'https://green-gnu-332746.hostingersite.com/api/v1/carts';
-let ACCESS_TOKEN = 'Bearer ' + localStorage.getItem('ACCESS_TOKEN');
+ACCESS_TOKEN = 'Bearer ' + localStorage.getItem('ACCESS_TOKEN');
 
 if(localStorage.bills != null){
     bills = JSON.parse(localStorage.bills);

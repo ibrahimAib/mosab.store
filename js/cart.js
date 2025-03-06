@@ -1,7 +1,7 @@
-let cart;
-let prodocts;
+cart;
+prodocts;
 let customerUrl = 'https://green-gnu-332746.hostingersite.com/api/v1/customers';
-let ACCESS_TOKEN = 'Bearer ' + localStorage.getItem('ACCESS_TOKEN');
+ACCESS_TOKEN = 'Bearer ' + localStorage.getItem('ACCESS_TOKEN');
 
 if(localStorage.cart != null && document.getElementById('cart')){
     cart = JSON.parse(localStorage.cart);
