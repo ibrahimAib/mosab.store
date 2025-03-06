@@ -1,6 +1,7 @@
 let bills;
 let billUrl = 'https://green-gnu-332746.hostingersite.com/api/v1/bills';
 let cartUrl = 'https://green-gnu-332746.hostingersite.com/api/v1/carts';
+let ACCESS_TOKEN = 'Bearer ' + localStorage.getItem('ACCESS_TOKEN');
 
 if(localStorage.bills != null){
     bills = JSON.parse(localStorage.bills);
@@ -21,10 +22,15 @@ async function saveBill(){
     const response = await fetch(billUrl,{
         method: 'POST',
         headers:{
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': ACCESS_TOKEN
         },
         body: JSON.stringify(bill)
     })
+    if (response.status == 401) {
+        window.location.href = "https://mosab.store/pages/login.html";
+
+    };
     const data = await response.json();
     const billId = data['id'];
 
@@ -42,11 +48,16 @@ async function saveBill(){
         try {
             const cartResponse = await fetch(cartUrl, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
+                headers:{
+                    'Content-Type': 'application/json',
+                    'Authorization': ACCESS_TOKEN
                 },
                 body: JSON.stringify(cartItem)
             });
+            if (response.status == 401) {
+                window.location.href = "https://mosab.store/pages/login.html";
+    
+            };
     
             if (!cartResponse.ok) {
                 throw new Error(`HTTP error! status: ${cartResponse.status}`);
@@ -71,7 +82,16 @@ async function saveBill(){
 // show the bills
 
 async function renderBills() {
-    const response = await fetch(billUrl)
+    const response = await fetch(billUrl,{
+        headers:{
+            'Content-Type': 'application/json',
+            'Authorization': ACCESS_TOKEN
+        },
+    })
+    if (response.status == 401) {
+        window.location.href = "https://mosab.store/pages/login.html";
+
+    };
     const data = await response.json();
     let bills = data['data']
     document.getElementById('bills').innerHTML = '';
@@ -130,10 +150,15 @@ async function paymentUpdata(element, state){
     const response = await fetch(elementUrl,{
         'method': 'PUT',
         'headers':{
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': ACCESS_TOKEN
         },
         'body': JSON.stringify(body)
     })
+    if (response.status == 401) {
+        window.location.href = "https://mosab.store/pages/login.html";
+
+    };
     renderBills()
 
 }

@@ -18,7 +18,7 @@ async function getDataFromLocalStorage(bo){
 }
 
 async function getData() {
-    let url = 'http://mosabapi.test/api/v1/products';
+    let url = 'https://green-gnu-332746.hostingersite.com/api/v1/products';
     const response = await fetch(url,{
         
     })

@@ -1,6 +1,8 @@
 
 let customers;
 let customerUrl = 'https://green-gnu-332746.hostingersite.com/api/v1/customers';
+let ACCESS_TOKEN = 'Bearer ' + localStorage.getItem('ACCESS_TOKEN');
+
 getData()
 if(customers != null ){
     // customer = JSON.parse(localStorage.customer);
@@ -56,10 +58,15 @@ function add_product(){
         const response = await fetch(customerUrl,{
             method: 'POST',
             headers:{
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': ACCESS_TOKEN
             },
             body : JSON.stringify(item)
-        })
+        });
+        if (response.status == 401) {
+            window.location.href = "https://mosab.store/pages/login.html";
+
+        };
     }
     
 
@@ -113,10 +120,25 @@ function rendercustomer() {
 
 async function getData() {
     try {
-        const response = await fetch(customerUrl); // Add your `customerUrl` here
+        const response = await fetch(customerUrl,{
+            method: 'GET',
+            headers:{
+                'Content-Type': 'application/json',
+                'Authorization': ACCESS_TOKEN
+            },
+        }) // Add your `customerUrl` here
+        if (response.status == 401) {
+            window.location.href = "https://mosab.store/pages/login.html";
+
+        };
+        const data = await response.json();
+        console.log(data);
+        if (response.status == 401) {
+            window.location.href = "https://mosab.store/pages/login.html";
+
+        };
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         
-        const data = await response.json();
         customers = data['data'];
         let HTMLtable = '';
         if (document.getElementById('customers')) {
@@ -181,11 +203,16 @@ async function updateCustomerButton(id , ind){
 
     let response = await fetch(url,{
         method: 'PUT',
-        headers : {
-            'Content-Type': 'application/json'
+        headers:{
+            'Content-Type': 'application/json',
+            'Authorization': ACCESS_TOKEN
         },
         body: JSON.stringify(updatedProductData)
     });
+    if (response.status == 401) {
+        window.location.href = "https://mosab.store/pages/login.html";
+
+    };
     document.getElementById(save).classList.remove("savepro");
     document.getElementById(save).classList.add("btn-update");
     document.getElementById(saveIcon).style.display = 'none'
@@ -198,9 +225,14 @@ async function deleteProductButton(id) {
     fetch(url,{
         method: 'DELETE',
         headers:{
-            'Content-Type': 'application/json'
-        }
+            'Content-Type': 'application/json',
+            'Authorization': ACCESS_TOKEN
+        },
     }).then(getData)
+    if (response.status == 401) {
+        window.location.href = "https://mosab.store/pages/login.html";
+
+    };
 }
 
 

@@ -1,6 +1,8 @@
 let cart;
 let prodocts;
 let customerUrl = 'https://green-gnu-332746.hostingersite.com/api/v1/customers';
+let ACCESS_TOKEN = 'Bearer ' + localStorage.getItem('ACCESS_TOKEN');
+
 if(localStorage.cart != null && document.getElementById('cart')){
     cart = JSON.parse(localStorage.cart);
     renderCart()
@@ -35,7 +37,15 @@ function getIds(){
 let itemindex;
 async function getselections() {
     try {
-        const response = await fetch(productsUrl); // Add your `productsUrl` here
+        const response = await fetch(productsUrl,{
+            headers:{
+                'Authorization': ACCESS_TOKEN
+            },
+        }); // Add your `productsUrl` here
+        if (response.status == 401) {
+            window.location.href = "https://mosab.store/pages/login.html";
+
+        };
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         
         const data = await response.json();
@@ -117,7 +127,14 @@ function add_item(){
 // costumoers selction
 async function costumoersSelction() {
     
-    response = await fetch(customerUrl);
+    response = await fetch(customerUrl,{
+        headers:{
+            'Authorization': ACCESS_TOKEN
+        },
+    });
+    if (response.status == 401) {
+        window.location.href = "https://mosab.store/pages/login.html";
+    };
     const customers = await response.json();
     let customers_selctions = '';
     for(i=0; i < customers['data'].length; i++){
