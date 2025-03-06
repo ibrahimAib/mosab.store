@@ -97,7 +97,7 @@ body {
   position: relative;
   display: flex;
   justify-content: space-between;
-  padding: 10px 50px;
+  padding: 0 50px;
   height: 50vh;
 }
 .extra {
@@ -451,6 +451,9 @@ tr {
 #overAll{
   width: 70px;
 }
+#pad{
+  display:none;
+}
 @media (max-width: 650px){
   .container{
     width: 100%;
@@ -461,11 +464,14 @@ tr {
   #banner{
     display: none;
   }
+  #pad{
+    display:block;
+  }
   .bodycon{
     display: flex;
     flex-direction: column;
     height: 70vh;
-    padding: 17px 10px;
+    padding: 0 10px;
 
     /* overflow-x: hidden; */
     
