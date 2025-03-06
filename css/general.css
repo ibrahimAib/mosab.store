@@ -235,6 +235,13 @@ table {
   height: 10px;
   text-align: center;
 }
+.bill_table_titles thead {
+  position: sticky;
+  top: 0;
+  background: #faeab7; /* Ensure headers remain visible */
+  z-index: 10;
+  box-shadow: 2px 2px 5px 2px #b6a56e3b;
+}
 td {
   margin-right: 10px;
   /* text-align:center; */
@@ -481,8 +488,8 @@ tr {
 
   .homeBill_content{
     overflow: auto;
-
   }
+  
   #save_home{
     order: -1;
     margin-top: 5px;
