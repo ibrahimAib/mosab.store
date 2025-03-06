@@ -1,5 +1,5 @@
 cart;
-prodocts;
+let prodocts;
 let customerUrl = 'https://green-gnu-332746.hostingersite.com/api/v1/customers';
 ACCESS_TOKEN = 'Bearer ' + localStorage.getItem('ACCESS_TOKEN');
 
