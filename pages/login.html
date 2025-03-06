@@ -48,11 +48,12 @@
                 })
             });
             const data = await responce.json();
-            console.log(responce.status)
+
             let NEW_ACCESS_TOKEN = data['token']
+
             localStorage.setItem('ACCESS_TOKEN', NEW_ACCESS_TOKEN)
             if (responce.ok) {
-                window.history.back();
+                window.location.href = "https://mosab.store";
 
             }
         }
