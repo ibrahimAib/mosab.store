@@ -16,9 +16,10 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id="container">
+
         <div class="header" dir="ltr">
-            <div class="logo">
+            <div class="logo" >
                 <a href="/index.html">
                     <img src="/logo.png" alt="Logo" width="100px">
                 </a>
@@ -40,7 +41,7 @@
                 </div>
                 <div class="input_line">
                     <label class="label" for="add_ns"> التسلسلي:</label>
-                    <input class="text_intput" type="text" name="Serial_number" id="add_sn" onchange="printt()">
+                    <input class="text_intput" type="text" name="Serial_number" id="add_sn" ">
                 </div>
                 <div class="input_line">
                     <label class="label" for="add_amount">الكمية:</label>
@@ -84,15 +85,7 @@
         </div>
     </div>
     <script src="/js/prodocts.js"></script>
-    <script>
-        //add time
-        var now = new Date();
-        var datetime = now.toLocaleString();
-        document.getElementById("datetime").placeholder = datetime;
-        function printt() {
-            console.log('changed');
-        }
-    </script>
+
 </body>
 
 </html>

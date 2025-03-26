@@ -43,7 +43,7 @@ async function getselections() {
             },
         }); // Add your `productsUrl` here
         if (response.status == 401) {
-            window.location.href = "https://mosab.store/pages/login.html";
+            // window.location.href = "https://mosab.store/pages/login.html";
 
         };
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -133,7 +133,7 @@ async function costumoersSelction() {
         },
     });
     if (response.status == 401) {
-        window.location.href = "https://mosab.store/pages/login.html";
+        // window.location.href = "https://mosab.store/pages/login.html";
     };
     const customers = await response.json();
     let customers_selctions = '';
