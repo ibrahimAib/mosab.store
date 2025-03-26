@@ -2,15 +2,15 @@ let products;
 let productsUrl = "https://green-gnu-332746.hostingersite.com/api/v1/products";
 let ACCESS_TOKEN = "Bearer " + localStorage.getItem("ACCESS_TOKEN");
 getData();
-if (products != null) {
-  // products = JSON.parse(localStorage.products);
-} else {
-  products = [];
-  if (document.getElementById("products")) {
-    document.getElementById("products").innerHTML =
-      '<h3 style="text-align: center; color:red; font-size:20px">لا توجد منتجات</h3>';
-  }
-}
+// if (products != null) {
+//   // products = JSON.parse(localStorage.products);
+// } else {
+//   products = [];
+//   if (document.getElementById("products")) {
+//     document.getElementById("products").innerHTML =
+//       '<h3 style="text-align: center; color:red; font-size:20px">لا توجد منتجات</h3>';
+//   }
+// }
 
 // add item botton
 function add_product() {
@@ -141,6 +141,18 @@ function renderproducts() {
 
 async function getData() {
   try {
+    let loading = `
+    <div class="dot-spinner">
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+    </div>`
+    document.getElementById("products").innerHTML = loading
     const response = await fetch(productsUrl, {
       headers: {
         Authorization: ACCESS_TOKEN,
@@ -153,60 +165,7 @@ async function getData() {
 
     const data = await response.json();
     products = data["data"];
-    let HTMLtable = "";
-    if (document.getElementById("products")) {
-      HTMLtable = `
-            <thead>
-                <tr>
-                    <th>المنتج</th>
-                    <th>sn</th>
-                    <th>التصنيف</th>
-                    <th>المخزون</th>
-                    <th>السعر</th>
-                    <th>----</th>
-                </tr>
-            </thead>`;
-
-      for (let i = 0; i < products.length; i++) {
-        HTMLtable += `
-                <tr>
-                    <form id="updateProductForm${products[i]["id"]}">
-                        <td>
-                            <input class="text_intput text_input_small" id="title${i}" type="text" value="${products[i]["title"]}" name="title">
-                        </td>
-
-                        <td>
-                            <input class="text_intput text_input_small  mr-t" id="sn${i}" type="number" value="${products[i]["sn"]}" name="sn">
-                        </td>
-
-                        <td>
-                            <input class="text_intput text_input_small  mr-t" id="category${i}" type="text" value="${products[i]["category"]}" name="category">
-                        </td>
-
-                        <td>
-                            <input class="text_intput number_input_small mr-t" id="stock${i}" type="number" value="${products[i]["stock"]}" name="stock">
-                        </td>
-
-                        <td>
-                            <input class="text_intput number_input_small mr-t" type="number" id="price${i}" value="${products[i]["price"]}" name="price">
-                        </td>
-
-                        <td>
-                            <button type="button" id="save${i}" class="text_intput number_input_small btn-pro btn-update" onclick="updateProductButton(${products[i]["id"]},${i})" name="update">
-                                <span id="saveIcon${i}" style="display: none;" class="material-symbols-outlined icon_btn_Product">save</span>
-                                <span id="checkIcon${i}" class="material-symbols-outlined icon_btn_Product">check</span>
-                            </button>
-                            <button class="text_intput number_input_small  btn-del btn-pro" onclick="deleteProductButton(${products[i]["id"]})" name="update">
-                            <span class="material-symbols-outlined icon_btn_Product ">delete</span></button>
-                        </td>
-                    </form>
-                </tr>`;
-      }
-
-      document.getElementById("products").innerHTML = HTMLtable;
-
-      // Attach event listeners programmatically
-    }
+    renderproducts();
   } catch (error) {
     console.error("Error fetching or processing data:", error);
   }
@@ -326,6 +285,9 @@ function updata(element) {
   products[element].price = price;
 
   localStorage.setItem("products", JSON.stringify(products));
+  renderproducts();
+}
+function deletproducts() {
   renderproducts();
 }
 

@@ -82,6 +82,18 @@ async function saveBill(){
 // show the bills
 
 async function renderBills() {
+    let loading = `
+    <div class="dot-spinner">
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+    </div>`;
+document.getElementById("bills").innerHTML = loading;
     const response = await fetch(billUrl,{
         headers:{
             'Content-Type': 'application/json',

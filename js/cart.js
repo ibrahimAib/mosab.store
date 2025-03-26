@@ -1,5 +1,6 @@
 cart;
 let prodocts;
+let loading = true;
 let customerUrl = 'https://green-gnu-332746.hostingersite.com/api/v1/customers';
 ACCESS_TOKEN = 'Bearer ' + localStorage.getItem('ACCESS_TOKEN');
 
@@ -36,6 +37,9 @@ function getIds(){
 }
 let itemindex;
 async function getselections() {
+    let products_selctions = '';
+    products_selctions += '<option id="" value="" name="">جاري التحميل...</option>';
+    document.getElementById('add_name').innerHTML += products_selctions
     try {
         const response = await fetch(productsUrl,{
             headers:{
@@ -50,8 +54,8 @@ async function getselections() {
         
         const data = await response.json();
         products = data['data'];
-        let products_selctions = '';
-        products_selctions += '<option id="" value="" name="">اختر</option>';
+        products_selctions = '<option id="" value="" name="">اختر</option>';
+        document.getElementById('add_name').innerHTML = products_selctions;
         for(i=0; i<products.length; i++){
             products_selctions += `
             <option id="${products[i]['id']}" value="${products[i]['title']}" name="${products[i]['sn']}">${products[i]['title']}</option>
@@ -126,7 +130,9 @@ function add_item(){
 
 // costumoers selction
 async function costumoersSelction() {
-    
+    let customers_selctions = '';
+    customers_selctions += '<option id="" value="" name="">جاري التحميل...</option>';
+    document.getElementById('customers').innerHTML += customers_selctions
     response = await fetch(customerUrl,{
         headers:{
             'Authorization': ACCESS_TOKEN
@@ -136,7 +142,8 @@ async function costumoersSelction() {
         // window.location.href = "https://mosab.store/pages/login.html";
     };
     const customers = await response.json();
-    let customers_selctions = '';
+    customers_selctions = '';
+
     for(i=0; i < customers['data'].length; i++){
         customers_selctions += `
             <option value="${customers['data'][i]['id']}">${customers['data'][i]['name']}</option>
