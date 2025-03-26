@@ -471,18 +471,18 @@ tr {
   top: 0;
   right: 50%;
   opacity: 1;
-  background-color: rgb(230, 171, 171);
+  background-color: #f8d7da;
   display: flex;
   justify-content: space-between;
   padding: 0 10px  0 10px;
   align-items: center;
   width: 90%;
   max-width: 300px;
-  height: 60px;
+  height: 45px;
   margin-top: 5px;
-  border: solid 1.5px rgb(226, 195, 195) ;
-  border-radius: 10px;
-  box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.267);
+  border: solid 1.5px #f5c4c9 ;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.178);
   animation: show-up 0.5s;
   
 }
@@ -493,22 +493,22 @@ tr {
 .error-message-box button{
   all:unset;
   width: 20px;
-  color: rgb(119, 65, 65);
+  color: #84202a;
 }
 .error-message-box p{
-  color: rgb(119, 65, 65);
+  color: #84202a;
 
 
 }
 .success-message-box{
-  background-color: rgb(121, 207, 118);
-  border: solid 1.5px rgb(90, 173, 87) ;
+  background-color: #d1e7dd;
+  border: solid 1.5px #badbcc ;
 }
 .success-message-box button{
-  color: rgb(23, 73, 23);
+  color: #235133;
 }
 .success-message-box p{
-  color: rgb(23, 73, 23);
+  color: #235133;
 }
 @media (max-width: 650px){
   .container{
