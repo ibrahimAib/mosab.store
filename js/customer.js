@@ -106,6 +106,7 @@ function rendercustomer() {
 }
 
 async function getData() {
+
     let loading = `
         <div class="dot-spinner">
             <div class="dot-spinner__dot"></div>

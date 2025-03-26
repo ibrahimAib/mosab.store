@@ -1,7 +1,9 @@
 let products;
 let productsUrl = "https://green-gnu-332746.hostingersite.com/api/v1/products";
 let ACCESS_TOKEN = "Bearer " + localStorage.getItem("ACCESS_TOKEN");
-getData();
+if(document.getElementById('products') != null){
+    getData();
+}
 // if (products != null) {
 //   // products = JSON.parse(localStorage.products);
 // } else {
