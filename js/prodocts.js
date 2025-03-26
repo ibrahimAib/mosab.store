@@ -252,7 +252,6 @@ async function updateProductButton(id, ind) {
   } else {
     successMessage();
   }
-  console.log("test");
   document.getElementById(save).classList.remove("savepro");
   document.getElementById(save).classList.add("btn-update");
   document.getElementById(saveIcon).style.display = "none";

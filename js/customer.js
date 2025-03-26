@@ -86,7 +86,6 @@ function rendercustomer() {
                 <th>----</th>
             </tr>
         </thead>`;
-        console.log(customers)
         for(i = 0; i < customers.length; i++){
 
             HTMLtable += `
@@ -132,7 +131,6 @@ async function getData() {
 
         };
         const data = await response.json();
-        console.log(data);
         if (response.status == 401) {
             window.location.href = "https://mosab.store/pages/login.html";
 
