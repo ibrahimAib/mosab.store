@@ -56,8 +56,11 @@ async function getselections() {
         
         const data = await response.json();
         products = data['data'];
+
+        document.getElementById('add_name').innerHTML = '';
+        
         products_selctions = '<option id="" value="" name="">اختر</option>';
-        document.getElementById('add_name').innerHTML = products_selctions;
+        
         for(i=0; i<products.length; i++){
             products_selctions += `
             <option id="${products[i]['id']}" value="${products[i]['title']}" name="${products[i]['sn']}">${products[i]['title']}</option>
