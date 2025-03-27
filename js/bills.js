@@ -3,7 +3,7 @@ let billUrl = "https://green-gnu-332746.hostingersite.com/api/v1/bills";
 let cartUrl = "https://green-gnu-332746.hostingersite.com/api/v1/carts";
 ACCESS_TOKEN = "Bearer " + localStorage.getItem("ACCESS_TOKEN");
 
-if (document.getElementById('bills')) {
+if (document.getElementById("bills")) {
   getBills();
   const checkbox = document.getElementById("showPaidBills");
 
@@ -128,9 +128,8 @@ function renderBills() {
     .slice()
     .reverse()
     .forEach((bill) => {
-      !checkbox.checked
-        ? ""
-        : (HTMLtable += `
+      if (!checkbox.checked & (bill["paid"] == 1)) return;
+      HTMLtable += `
         <tr>
             <td><input type="text" class="text_intput text_input_small ${
               bill["customer"] == "العميل محذوف" ? "customer_deleted" : ""
@@ -145,17 +144,17 @@ function renderBills() {
             <button class="text_intput number_input_small mr-t ${
               bill["paid"] == 0 ? "btn-del" : "btn-update"
             } ${
-            bill["customer"] == "العميل محذوف" ? "customer_deleted" : ""
-          }" onclick="paymentUpdata(${bill["id"]},${bill["paid"]})">
+        bill["customer"] == "العميل محذوف" ? "customer_deleted" : ""
+      }" onclick="paymentUpdata(${bill["id"]},${bill["paid"]})">
                 <span id="waiting${
                   bill["id"]
                 }" class="material-symbols-outlined icon_btn_bill " style="display: none;">schedule</span>
                 <span id="state${bill["id"]}" class="icon_btn_bill "> ${
-            bill["paid"] == 0 ? "دفع" : "تم"
-          }</span>
+        bill["paid"] == 0 ? "دفع" : "تم"
+      }</span>
             </button>
             </td>
-            </tr>`);
+            </tr>`;
       // <input class="text_intput text_input_small mr-t ${bill['paid'] == 0 ? 'btn-del' : 'btn-update'}" type="button" value="${bill['paid'] == 0 ? 'دفع': 'تم'}" onclick="paymentUpdata(${bill['id']},${bill['paid']})">
     });
   document.getElementById("bills").innerHTML += HTMLtable;
@@ -184,7 +183,7 @@ async function paymentUpdata(element, state) {
   if (response.status == 401) {
     window.location.href = "https://mosab.store/pages/login.html";
   }
-  renderBills();
+  getBills();
 }
 let customers = [
   {
