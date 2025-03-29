@@ -196,6 +196,7 @@ async function deleteBill() {
     return;
   } else {
     successMessage();
+    getBills();
   }
   targetBillId = null;
   document.getElementById("areYouShur").remove();
