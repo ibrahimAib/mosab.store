@@ -19,7 +19,7 @@ if (document.getElementById("bills")) {
 async function saveBill() {
   if (cart.length <= 0) {
     alert("السلة فارغة");
-    return
+    return;
   } else {
     let customers = document.getElementById("customers");
     let customerId = customers.options[customers.selectedIndex].value;
@@ -69,16 +69,10 @@ async function saveBill() {
           },
           body: JSON.stringify(cartItem),
         });
-        if (response.status == 401) {
+        if (cartResponse.status == 401) {
           window.location.href = "https://mosab.store/login";
         }
-        if (!response.ok) {
-          errorMessage();
-          return;
-        } else {
-          successMessage();
-          sendWhatsappMessage();
-        }
+
         if (!cartResponse.ok) {
           throw new Error(`HTTP error! status: ${cartResponse.status} `);
         }
