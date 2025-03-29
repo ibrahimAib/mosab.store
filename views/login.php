@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تسجيل الدخول</title>
-    <link rel="icon" type="image/x-icon" href="/logo.png">
-    <link rel="stylesheet" href="/css/general.css"> <!-- Link to your CSS file -->
+    <link rel="icon" type="image/x-icon" href="./logo.png">
+    <link rel="stylesheet" href="./css/general.css"> <!-- Link to your CSS file -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
@@ -31,22 +31,25 @@
         </div>
     </div>
     <script>
-
         async function login() {
             let email = document.getElementById('email').value;
             let password = document.getElementById('password').value;
+            console.log(email, password)
             let url = 'https://green-gnu-332746.hostingersite.com/api/login';
+
             const responce = await fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content // Add CSRF token
+
                 },
                 body: JSON.stringify({
                     email: email,
                     password: password
                 })
             });
+
+
             const data = await responce.json();
 
             let NEW_ACCESS_TOKEN = data['token']

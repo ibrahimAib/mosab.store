@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>بسطة مصعب</title>
-    <link rel="icon" type="image/x-icon" href="/logo.png">
-    <link rel="stylesheet" href="/css/general.css">
+    <link rel="icon" type="image/x-icon" href="./logo.png">
+    <link rel="stylesheet" href="./css/general.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&display=swap" rel="stylesheet">
@@ -19,14 +19,14 @@
         <div class="header" dir="ltr">
             <div class="logo">
                 <a href="/index.html">
-                    <img src="/logo.png" alt="Logo" width="100px">
+                    <img src="./logo.png" alt="Logo" width="100px">
                 </a>
             </div>
             <nav class="nav">
-                <a href="/pages/customer.html" class="nav-link">العملاء</a>
-                <a href="/pages/prodoct.html" class="nav-link">المنتجات</a>
-                <a href="/pages/bills.html" class="nav-link nav-selected">الفواتير</a>
-                <a href="/index.html" class="nav-link">البيع</a>
+                <a href="customers" class="nav-link">العملاء</a>
+                <a href="prodoct" class="nav-link ">المنتجات</a>
+                <a href="bills" class="nav-link  nav-selected">الفواتير</a>
+                <a href="/" class="nav-link">البيع</a>
             </nav>
         </div>
         <div style="height: 9px;"></div>
@@ -53,7 +53,7 @@
             </div>
         </div>
     </div>
-    <script src="/js/bills.js"></script>
+    <script src="./js/bills.js"></script>
 
 </body>
 
