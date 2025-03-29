@@ -78,7 +78,7 @@
                         </table>
                     </div>
                 </div>
-                input:checkbox
+
                 <hr>
 
             </div>
