@@ -3,9 +3,9 @@
 require_once __DIR__ . '/router.php';
 
 
-$loc = '/mosab.store';
+$loc = '';
 
-$index = $loc . '/';
+$index = $loc . '';
 $customers = $loc . '/customers';
 $prodoct = $loc . '/prodoct';
 $bills = $loc . '/bills';

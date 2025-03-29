@@ -60,7 +60,7 @@ function add_product() {
       body: JSON.stringify(item),
     });
     if (response.status == 401) {
-      window.location.href = "https://mosab.store/pages/login.html";
+      window.location.href = "https://mosab.store/login";
     }
   }
 
@@ -132,7 +132,7 @@ async function getData() {
     }
     const data = await response.json();
     if (response.status == 401) {
-      window.location.href = "https://mosab.store/pages/login.html";
+      window.location.href = "https://mosab.store/login";
     }
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
@@ -206,7 +206,7 @@ async function updateCustomerButton(id, ind) {
     body: JSON.stringify(updatedProductData),
   });
   if (response.status == 401) {
-    window.location.href = "https://mosab.store/pages/login.html";
+    window.location.href = "https://mosab.store/login";
   }
   document.getElementById(save).classList.remove("savepro");
   document.getElementById(save).classList.add("btn-update");
@@ -223,7 +223,7 @@ async function deleteProductButton(id) {
     },
   }).then(getData);
   if (response.status == 401) {
-    window.location.href = "https://mosab.store/pages/login.html";
+    window.location.href = "https://mosab.store/login";
   }
 }
 

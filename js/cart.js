@@ -49,7 +49,7 @@ async function getselections() {
       },
     }); // Add your `productsUrl` here
     if (response.status == 401) {
-      // window.location.href = "https://mosab.store/pages/login.html";
+      window.location.href = "https://mosab.store/login";
     }
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
@@ -136,7 +136,7 @@ async function costumoersSelction() {
     },
   });
   if (response.status == 401) {
-    // window.location.href = "https://mosab.store/pages/login.html";
+    window.location.href = "https://mosab.store/login";
   }
   const customers = await response.json();
   customers_selctions = "";
@@ -164,7 +164,7 @@ function getProductInfoByName() {
     .getElementById("add_amount")
     .setAttribute("max", products[itemindex].stock);
 }
-let snEvent = document.getElementById("add_sn");
+let snEvent = document.getElemenitById("add_sn");
 snEvent.addEventListener("input", getProdoctInfoBySn);
 function getProdoctInfoBySn() {
   let itemindex = products.findIndex((i) => {

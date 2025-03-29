@@ -36,7 +36,7 @@ async function saveBill() {
       body: JSON.stringify(bill),
     });
     if (response.status == 401) {
-      window.location.href = "https://mosab.store/pages/login.html";
+      window.location.href = "https://mosab.store/login";
     }
     const data = await response.json();
     const billId = data["id"];

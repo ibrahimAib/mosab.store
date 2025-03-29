@@ -74,7 +74,7 @@ function add_product() {
       body: JSON.stringify(item),
     });
     if (response.status == 401) {
-      window.location.href = "https://mosab.store/pages/login.html";
+      window.location.href = "https://mosab.store/login";
     }
     if (!response.ok) {
       errorMessage();
@@ -161,7 +161,7 @@ async function getData() {
       },
     }); // Add your `productsUrl` here
     if (response.status == 401) {
-      window.location.href = "https://mosab.store/pages/login.html";
+      window.location.href = "https://mosab.store/login";
     }
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
@@ -204,7 +204,7 @@ async function updateProductButton(id, ind) {
     body: JSON.stringify(updatedProductData),
   });
   if (response.status == 401) {
-    window.location.href = "https://mosab.store/pages/login.html";
+    window.location.href = "https://mosab.store/login";
   }
 
   if (!response.ok) {
@@ -234,7 +234,7 @@ async function deleteProductButton(id) {
     },
   });
   if (response.status == 401) {
-    window.location.href = "https://mosab.store/pages/login.html";
+    window.location.href = "https://mosab.store/login";
   }
   if (!response.ok) {
     errorMessage();
