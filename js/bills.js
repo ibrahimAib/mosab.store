@@ -280,3 +280,55 @@ async function paymentUpdata(element, state) {
   }
   getBills();
 }
+
+function sendWhatsappMessage() {
+  let isChecked = document.getElementById("whatsappCheckbox").checked;
+  if (!isChecked) {
+    return;
+  }
+  let sumoverAll = document.getElementById("overAll").value;
+  let wpTitle;
+  let wpAmount;
+  let wpPrice;
+  let combain;
+  let newline = "%0a";
+  let spirater = "-------------------";
+  let wpMessage =
+    "*الفاتورة:*" + newline + "ـــــــــــــــــــــــــــــــــــــ";
+  cart.forEach((item) => {
+    wpTitle = item.title;
+    wpAmount = item.add_amount;
+    wpPrice = item.sum;
+    combain = `
+    ${newline}
+    ${newline}
+    ${newline}
+    *${wpTitle}*
+    ${newline}
+    العدد:  ${wpAmount}
+    ${newline}
+    السعر:  ${wpPrice} ريال
+    ${newline}
+    ${spirater}
+    ${newline}
+    `;
+    wpMessage += combain;
+  });
+  let finaladd = `
+  
+  ${newline}
+  ${newline}
+  ـــــــــــــــــــــــــــــــــــــ
+  ${newline}
+  المجموع:  ${sumoverAll} ريال
+  `;
+  wpMessage += finaladd;
+  let customersSelect = document.getElementById("customers");
+  let selectedOption =
+    customersSelect.options[customersSelect.selectedIndex].value;
+
+  let customerPhone =
+    customers["data"].find((customer) => customer.id == selectedOption)
+      ?.phone || "";
+  window.open("https://wa.me/" + "+966" + customerPhone + "?text=" + wpMessage);
+}
