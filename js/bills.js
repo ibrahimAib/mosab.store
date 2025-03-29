@@ -40,6 +40,7 @@ async function saveBill() {
       errorMessage();
       return;
     } else {
+      console.log('response.ok == true')
       successMessage();
       sendWhatsappMessage();
     }
