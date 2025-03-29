@@ -40,7 +40,7 @@ async function saveBill() {
       errorMessage();
       return;
     } else {
-      console.log('response.ok == true')
+      console.log("response.ok == true");
       successMessage();
       sendWhatsappMessage();
     }
@@ -284,8 +284,11 @@ async function paymentUpdata(element, state) {
 
 function sendWhatsappMessage() {
   console.log("first line");
+  document
+    .getElementById("whatsappCheckbox")
+    .dispatchEvent(new Event("change"));
   let isChecked = document.getElementById("whatsappCheckbox").checked;
-  console.log(isChecked)
+  console.log(isChecked);
   if (!isChecked) {
     console.log("!isChecked");
     return;
