@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id="container">
         <div class="header" dir="ltr">
             <div class="logo">
                 <a href="/index.html">
@@ -40,12 +40,21 @@
                     </div>
                 </div>
                 <hr>
-                <div class="homeBill_content homeBill_content_bill extra">
+                <div class="homeBill_content homeBill_content_bill extra" id="bill-box">
                     <div>
                         <table class="bill_table_titles bills_table" id="bills">
 
                         </table>
                     </div>
+                    <!-- <div class="areYouShur" id="areYouShur">
+                        <div>
+                            <p>هل أنت متأكد من حذف الفاتورة</p>
+                        </div>
+                        <div class="areYouShure-btns-box">
+                            <button class="text_intput number_input_small mr-t btn-del " onclick="deleteBill()">حذف</button>
+                            <button class="text_intput number_input_small mr-t btn-del ">الغاء</button>
+                        </div>
+                    </div> -->
                 </div>
 
                 <hr>

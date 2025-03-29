@@ -3,6 +3,7 @@ let billUrl = "https://green-gnu-332746.hostingersite.com/api/v1/bills";
 let cartUrl = "https://green-gnu-332746.hostingersite.com/api/v1/carts";
 ACCESS_TOKEN = "Bearer " + localStorage.getItem("ACCESS_TOKEN");
 
+let targetBillId;
 if (document.getElementById("bills")) {
   getBills();
   const checkbox = document.getElementById("showPaidBills");
@@ -154,10 +155,10 @@ function renderBills() {
       }</span>
             </button>
 
-            <button class="text_intput text_input_small  btn-del btn-pro" onclick="areYouShur(${
+            <button class="text_intput text_input_small  btn-del  btn-pro mr-t delete-bill-btn" onclick="areYouShur(${
               bill["id"]
-            })" name="update">
-                            <span class="material-symbols-outlined icon_btn_Product ">delete</span></button>
+            })" name="delete">
+                            <span class="material-symbols-outlined icon_btn_Product mr-t">delete</span></button>
             </td>
             </tr>`;
       // <input class="text_intput text_input_small mr-t ${bill['paid'] == 0 ? 'btn-del' : 'btn-update'}" type="button" value="${bill['paid'] == 0 ? 'دفع': 'تم'}" onclick="paymentUpdata(${bill['id']},${bill['paid']})">
@@ -165,7 +166,80 @@ function renderBills() {
   document.getElementById("bills").innerHTML += HTMLtable;
 }
 function areYouShur(id) {
-  console.log(id);
+  if (document.getElementById("areYouShur") != null) {
+    document.getElementById("areYouShur").remove();
+  }
+  targetBillId = id;
+  document.getElementById("bill-box").innerHTML += `
+  <div class="areYouShur" id="areYouShur">
+      <div>
+          <p>هل أنت متأكد من حذف الفاتورة</p>
+      </div>
+      <div class="areYouShure-btns-box">
+          <button class="text_intput number_input_small mr-t btn-del " onclick="deleteBill()">حذف</button>
+          <button class="text_intput number_input_small mr-t btn-del " onclick="closeAreYouShurBox()">الغاء</button>
+      </div>
+  </div>
+  `;
+}
+async function deleteBill() {
+  let deletbillurl = billUrl + "/" + targetBillId;
+  let response = await fetch(deletbillurl, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: ACCESS_TOKEN,
+    },
+  });
+  if (!response.ok) {
+    errorMessage();
+    return;
+  } else {
+    successMessage();
+  }
+  targetBillId = null;
+  document.getElementById("areYouShur").remove();
+}
+function closeAreYouShurBox() {
+  document.getElementById("areYouShur").remove();
+}
+
+function errorMessage() {
+  if (document.getElementById("erorr-message") != null) {
+    document.getElementById("erorr-message").remove();
+  }
+  let errorMessage = `
+      <div class="error-message-box" id="erorr-message">
+          <span>حدث خطأ:</span>
+          <p>لم يتم حفظ التغييرات</p>
+          <button type="button" class="" onclick="closcMessagErorr()">X</button>
+      </div>`;
+
+  document.getElementById("container").innerHTML += errorMessage;
+}
+function closcMessagErorr() {
+  let errorMessage = document.getElementById("erorr-message");
+  if (errorMessage) {
+    errorMessage.remove(); // Removes the element from the DOM
+  }
+}
+function successMessage() {
+  if (document.getElementById("success-message") != null) {
+    document.getElementById("success-message").remove();
+  }
+  let errorMessage = `
+      <div class="error-message-box success-message-box " id="success-message">
+          <p>تم حفظ التغييرات</p>
+          <button type="button" class="" onclick="closcSuccessMessage()">X</button>
+      </div>`;
+
+  document.getElementById("container").innerHTML += errorMessage;
+}
+function closcSuccessMessage() {
+  let errorMessage = document.getElementById("success-message");
+  if (errorMessage) {
+    errorMessage.remove(); // Removes the element from the DOM
+  }
 }
 async function paymentUpdata(element, state) {
   let waitingIconId = `waiting${element}`;
@@ -190,59 +264,11 @@ async function paymentUpdata(element, state) {
   if (response.status == 401) {
     window.location.href = "https://mosab.store/pages/login.html";
   }
+  if (!response.ok) {
+    errorMessage();
+    return;
+  } else {
+    successMessage();
+  }
   getBills();
 }
-let customers = [
-  {
-    id: 0,
-    name: "جدي",
-  },
-  {
-    id: 1,
-    name: "جده",
-  },
-  {
-    id: 2,
-    name: "تركي",
-  },
-  {
-    id: 3,
-    name: "نسيبة",
-  },
-  {
-    id: 4,
-    name: "ساره",
-  },
-  {
-    id: 5,
-    name: "اسية",
-  },
-  {
-    id: 6,
-    name: "افنان",
-  },
-  {
-    id: 7,
-    name: "منيرة",
-  },
-  {
-    id: 8,
-    name: "رزان",
-  },
-  {
-    id: 9,
-    name: "ابراهيم",
-  },
-  {
-    id: 10,
-    name: "ايلاف",
-  },
-  {
-    id: 11,
-    name: "سما",
-  },
-  {
-    id: 12,
-    name: "ناصر",
-  },
-];

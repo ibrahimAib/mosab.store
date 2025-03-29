@@ -1,8 +1,8 @@
 let products;
 let productsUrl = "https://green-gnu-332746.hostingersite.com/api/v1/products";
 let ACCESS_TOKEN = "Bearer " + localStorage.getItem("ACCESS_TOKEN");
-if(document.getElementById('products') != null){
-    getData();
+if (document.getElementById("products") != null) {
+  getData();
 }
 // if (products != null) {
 //   // products = JSON.parse(localStorage.products);
@@ -153,8 +153,8 @@ async function getData() {
         <div class="dot-spinner__dot"></div>
         <div class="dot-spinner__dot"></div>
         <div class="dot-spinner__dot"></div>
-    </div>`
-    document.getElementById("products").innerHTML = loading
+    </div>`;
+    document.getElementById("products").innerHTML = loading;
     const response = await fetch(productsUrl, {
       headers: {
         Authorization: ACCESS_TOKEN,
@@ -215,7 +215,7 @@ async function updateProductButton(id, ind) {
   }
   document.getElementById(save).classList.remove("savepro");
   document.getElementById(save).classList.add("btn-update");
-  if(  document.getElementById(saveIcon).style.display = "none"){
+  if ((document.getElementById(saveIcon).style.display = "none")) {
     document.getElementById(saveIcon).style.display = "none";
   }
   document.getElementById(checkIcon).style.display = "block";
@@ -242,6 +242,9 @@ async function deleteProductButton(id) {
   getData();
 }
 function errorMessage() {
+  if (document.getElementById("erorr-message") != null) {
+    document.getElementById("erorr-message").remove();
+  }
   let errorMessage = `        
       <div class="error-message-box" id="erorr-message">
           <span>حدث خطأ:</span>
@@ -258,6 +261,9 @@ function closcMessagErorr() {
   }
 }
 function successMessage() {
+  if (document.getElementById("success-message") != null) {
+    document.getElementById("success-message").remove();
+  }
   let errorMessage = `        
       <div class="error-message-box success-message-box " id="success-message">
           <p>تم حفظ التغييرات</p>

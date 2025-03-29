@@ -468,6 +468,9 @@ tr {
 @keyframes show-up {
   from{opacity: 0;}
 }
+@keyframes upToDoun-message-box {
+  from{position:absolute; top: 30px;}
+}
 .error-message-box{
   position: fixed;
   top: 0;
@@ -485,7 +488,7 @@ tr {
   border: solid 1.5px #f5c4c9 ;
   border-radius: 5px;
   box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.178);
-  animation: show-up 0.5s;
+  animation: show-up 0.2s, upToDoun-message-box 0.2s;
   
 }
 .error-message-box span{
@@ -730,4 +733,38 @@ tr {
     transform: scale(1);
     opacity: 1;
   }
+}
+
+.areYouShur {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 40px;
+  position: fixed;
+  z-index: 9999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  border: solid 0.5px #ffda6c;
+  border-radius: 5px;
+  background-color: #ffda6c27;
+  backdrop-filter: blur(1px);
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.13);
+  animation:show-up 0.2s, upToDoun-areYouShor 0.08s;
+}
+.areYouShure-btns-box{
+  display: flex;
+  justify-content: space-between;
+  /* padding-left: 30px;
+  padding-right: 30px; */
+}
+
+@keyframes upToDoun-areYouShor {
+  from{position:absolute; top: 250px;}
+}
+
+.delete-bill-btn{
+  position: relative;
+  top: 5px;
 }
