@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 Not Found</title>
+    <link rel="icon" type="image/x-icon" href="./logo.png">
     <style>
         :root {
             --primary: #ffc107;
@@ -62,6 +64,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>404</h1>
@@ -69,4 +72,5 @@
         <a href="/">العودة إلى الصفحة الرئيسية</a>
     </div>
 </body>
+
 </html>

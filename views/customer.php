@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>بسطة مصعب</title>
-    <link rel="icon" type="image/x-icon" href="/.logo.png">
+    <link rel="icon" type="image/x-icon" href="./logo.png">
     <link rel="stylesheet" href="./css/general.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
