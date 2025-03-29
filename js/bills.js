@@ -282,10 +282,13 @@ async function paymentUpdata(element, state) {
 }
 
 function sendWhatsappMessage() {
+  console.log("first line");
   let isChecked = document.getElementById("whatsappCheckbox").checked;
   if (!isChecked) {
+    console.log("!isChecked");
     return;
   }
+  console.log("isChecked");
   let sumoverAll = document.getElementById("overAll").value;
   let wpTitle;
   let wpAmount;
