@@ -128,7 +128,7 @@ function renderBills() {
     .slice()
     .reverse()
     .forEach((bill) => {
-      if (!checkbox.checked & (bill["paid"] == 1)) return;
+      if (!checkbox.checked && bill["paid"] == 1) return;
       HTMLtable += `
         <tr>
             <td><input type="text" class="text_intput text_input_small ${
@@ -153,13 +153,20 @@ function renderBills() {
         bill["paid"] == 0 ? "دفع" : "تم"
       }</span>
             </button>
+
+            <button class="text_intput text_input_small  btn-del btn-pro" onclick="areYouShur(${
+              bill["id"]
+            })" name="update">
+                            <span class="material-symbols-outlined icon_btn_Product ">delete</span></button>
             </td>
             </tr>`;
       // <input class="text_intput text_input_small mr-t ${bill['paid'] == 0 ? 'btn-del' : 'btn-update'}" type="button" value="${bill['paid'] == 0 ? 'دفع': 'تم'}" onclick="paymentUpdata(${bill['id']},${bill['paid']})">
     });
   document.getElementById("bills").innerHTML += HTMLtable;
 }
-
+function areYouShur(id) {
+  console.log(id);
+}
 async function paymentUpdata(element, state) {
   let waitingIconId = `waiting${element}`;
   let stateId = `state${element}`;

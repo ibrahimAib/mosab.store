@@ -2,13 +2,10 @@ cart;
 let prodocts;
 let loading = true;
 let customerUrl = "https://green-gnu-332746.hostingersite.com/api/v1/customers";
-console.log("dd");
-if (localStorage.getItem("ACCESS_TOKEN")) {
-  ACCESS_TOKEN = "Bearer " + localStorage.getItem("ACCESS_TOKEN");
-} else {
-  window.location.href = "http://localhost/mosab.store/login";
+ACCESS_TOKEN = "Bearer " + localStorage.getItem("ACCESS_TOKEN");
+if (!ACCESS_TOKEN) {
+  console.log(ACCESS_TOKEN);
 }
-
 if (localStorage.cart != null && document.getElementById("cart")) {
   cart = JSON.parse(localStorage.cart);
   renderCart();
@@ -52,7 +49,7 @@ async function getselections() {
       },
     }); // Add your `productsUrl` here
     if (response.status == 401) {
-      window.location.href = "http://localhost/mosab.store/login";
+      // window.location.href = "https://mosab.store/pages/login.html";
     }
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 

@@ -215,7 +215,9 @@ async function updateProductButton(id, ind) {
   }
   document.getElementById(save).classList.remove("savepro");
   document.getElementById(save).classList.add("btn-update");
-  document.getElementById(saveIcon).style.display = "none";
+  if(  document.getElementById(saveIcon).style.display = "none"){
+    document.getElementById(saveIcon).style.display = "none";
+  }
   document.getElementById(checkIcon).style.display = "block";
 }
 
