@@ -212,13 +212,16 @@ async function updateProductButton(id, ind) {
     return;
   } else {
     successMessage();
+    getData();
   }
   document.getElementById(save).classList.remove("savepro");
   document.getElementById(save).classList.add("btn-update");
-  if ((document.getElementById(saveIcon).style.display = "none")) {
+  if (document.getElementById(saveIcon) != null) {
     document.getElementById(saveIcon).style.display = "none";
   }
-  document.getElementById(checkIcon).style.display = "block";
+  if (document.getElementById(checkIcon) != "none") {
+    document.getElementById(checkIcon).style.display = "block";
+  }
 }
 
 async function deleteProductButton(id) {
