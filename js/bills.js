@@ -285,6 +285,7 @@ async function paymentUpdata(element, state) {
 function sendWhatsappMessage() {
   console.log("first line");
   let isChecked = document.getElementById("whatsappCheckbox").checked;
+  console.log(isChecked)
   if (!isChecked) {
     console.log("!isChecked");
     return;
