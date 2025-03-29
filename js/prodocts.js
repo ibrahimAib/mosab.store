@@ -257,12 +257,6 @@ function errorMessage() {
 
   document.getElementById("container").innerHTML += errorMessage;
 }
-function closcMessagErorr() {
-  let errorMessage = document.getElementById("erorr-message");
-  if (errorMessage) {
-    errorMessage.remove(); // Removes the element from the DOM
-  }
-}
 function successMessage() {
   if (document.getElementById("success-message") != null) {
     document.getElementById("success-message").remove();
@@ -274,6 +268,12 @@ function successMessage() {
       </div>`;
 
   document.getElementById("container").innerHTML += errorMessage;
+}
+function closcMessagErorr() {
+  let errorMessage = document.getElementById("erorr-message");
+  if (errorMessage) {
+    errorMessage.remove(); // Removes the element from the DOM
+  }
 }
 function closcSuccessMessage() {
   let errorMessage = document.getElementById("success-message");

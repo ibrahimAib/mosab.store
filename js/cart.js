@@ -1,5 +1,6 @@
 cart;
 let prodocts;
+let customers;
 let loading = true;
 let customerUrl = "https://green-gnu-332746.hostingersite.com/api/v1/customers";
 ACCESS_TOKEN = "Bearer " + localStorage.getItem("ACCESS_TOKEN");
@@ -138,7 +139,7 @@ async function costumoersSelction() {
   if (response.status == 401) {
     window.location.href = "https://mosab.store/login";
   }
-  const customers = await response.json();
+  customers = await response.json();
   customers_selctions = "";
 
   for (i = 0; i < customers["data"].length; i++) {
@@ -164,7 +165,7 @@ function getProductInfoByName() {
     .getElementById("add_amount")
     .setAttribute("max", products[itemindex].stock);
 }
-let snEvent = document.getElemenitById("add_sn");
+let snEvent = document.getElementById("add_sn");
 snEvent.addEventListener("input", getProdoctInfoBySn);
 function getProdoctInfoBySn() {
   let itemindex = products.findIndex((i) => {
@@ -252,4 +253,55 @@ function amoutnUpdataCart(id) {
   cart[id]["sum"] = parseFloat(sum);
   localStorage.setItem("cart", JSON.stringify(cart));
   renderCart();
+}
+
+function sendWhatsappMessage() {
+  let isChecked = document.getElementById("whatsappCheckbox").checked;
+  if (!isChecked) {
+    return;
+  }
+  let sumoverAll = document.getElementById("overAll").value;
+  let wpTitle;
+  let wpAmount;
+  let wpPrice;
+  let combain;
+  let newline = "%0a";
+  let spirater = "-------------------";
+  let wpMessage = "*الفاتورة:*" + newline + "ـــــــــــــــــــــــــــــــــــــ";
+  cart.forEach((item) => {
+    wpTitle = item.title;
+    wpAmount = item.add_amount;
+    wpPrice = item.sum;
+    combain = `
+    ${newline}
+    ${newline}
+    ${newline}
+    *${wpTitle}*
+    ${newline}
+    العدد:  ${wpAmount}
+    ${newline}
+    السعر:  ${wpPrice} ريال
+    ${newline}
+    ${spirater}
+    ${newline}
+    `;
+    wpMessage += combain;
+  });
+  let finaladd = `
+  
+  ${newline}
+  ${newline}
+  ـــــــــــــــــــــــــــــــــــــ
+  ${newline}
+  المجموع:  ${sumoverAll} ريال
+  `;
+  wpMessage += finaladd;
+  let customersSelect = document.getElementById("customers");
+  let selectedOption =
+    customersSelect.options[customersSelect.selectedIndex].value;
+
+  let customerPhone =
+    customers["data"].find((customer) => customer.id == selectedOption)
+      ?.phone || "";
+  window.open("https://wa.me/" + "+966" + customerPhone + "?text=" + wpMessage);
 }

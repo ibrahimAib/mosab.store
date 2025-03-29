@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id="container">
         <div class="header" dir="ltr">
             <div class="logo">
                 <a href="/index.html">
@@ -65,8 +65,18 @@
 
                         </select>
                     </div>
-                    <input id="save_home" class="submit_button save_btn" type="button" value="حفظ" onclick="saveBill()">
+                    <div>
 
+                    </div>
+                    <input id="save_home" class="submit_button save_btn" type="button" value="حفظ" onclick="saveBill()">
+                    <!-- From Uiverse.io by martinval9 -->
+                    <div class="whatsapp-checkbox-box">
+                        <span>ارسال الفاتورة:</span>
+                        <label class="whatsapp-checkbox-label">
+                            <input type="checkbox" id="whatsappCheckbox">
+                            <div class="checkmark"></div>
+                        </label>
+                    </div>
                     <div>
                         <label class="customers" for="overAll">المجموع:</label>
                         <input type="number" name="overAll" class="text_intput" id="overAll" readonly>

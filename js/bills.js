@@ -35,6 +35,12 @@ async function saveBill() {
       },
       body: JSON.stringify(bill),
     });
+    if (!response.ok) {
+      errorMessage();
+      return;
+    } else {
+      successMessage();
+    }
     if (response.status == 401) {
       window.location.href = "https://mosab.store/login";
     }
@@ -62,11 +68,16 @@ async function saveBill() {
           body: JSON.stringify(cartItem),
         });
         if (response.status == 401) {
-          window.location.href = "https://mosab.store/pages/login.html";
+          window.location.href = "https://mosab.store/login";
         }
-
+        if (!response.ok) {
+          errorMessage();
+          return;
+        } else {
+          successMessage();
+        }
         if (!cartResponse.ok) {
-          throw new Error(`HTTP error! status: ${cartResponse.status}`);
+          throw new Error(`HTTP error! status: ${cartResponse.status} `);
         }
       } catch (error) {
         console.error("Error:", error);
@@ -75,7 +86,7 @@ async function saveBill() {
     }
   }
   // cut the amount form stock
-
+  sendWhatsappMessage();
   localStorage.removeItem("cart");
   cart = [];
   if (document.getElementById("cart") && cart.length == 0) {
