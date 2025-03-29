@@ -34,7 +34,6 @@
         async function login() {
             let email = document.getElementById('email').value;
             let password = document.getElementById('password').value;
-            console.log(email, password)
             let url = 'https://green-gnu-332746.hostingersite.com/api/login';
 
             const responce = await fetch(url, {

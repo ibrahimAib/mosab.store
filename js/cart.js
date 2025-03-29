@@ -5,7 +5,8 @@ let loading = true;
 let customerUrl = "https://green-gnu-332746.hostingersite.com/api/v1/customers";
 ACCESS_TOKEN = "Bearer " + localStorage.getItem("ACCESS_TOKEN");
 if (!ACCESS_TOKEN) {
-  console.log(ACCESS_TOKEN);
+  window.location.href = "https://mosab.store/login";
+} else {
 }
 if (localStorage.cart != null && document.getElementById("cart")) {
   cart = JSON.parse(localStorage.cart);
@@ -58,14 +59,14 @@ async function getselections() {
     products = data["data"];
 
     document.getElementById("add_name").innerHTML = "";
-
     products_selctions = '<option id="" value="" name="">اختر</option>';
-
-    for (i = 0; i < products.length; i++) {
-      products_selctions += `
-            <option id="${products[i]["id"]}" value="${products[i]["title"]}" name="${products[i]["sn"]}">${products[i]["title"]}</option>
-            `;
-    }
+    products.forEach((item) => {
+      item.stock != 0
+        ? (products_selctions += `
+            <option id="${item.id}" value="${item.title}" name="${item.sn}">${item.title}</option>
+            `)
+        : "";
+    });
     document.getElementById("add_name").innerHTML += products_selctions;
     // Attach event listeners programmatically
   } catch (error) {
@@ -254,4 +255,3 @@ function amoutnUpdataCart(id) {
   localStorage.setItem("cart", JSON.stringify(cart));
   renderCart();
 }
-

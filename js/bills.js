@@ -2,6 +2,24 @@ let bills;
 let billUrl = "https://green-gnu-332746.hostingersite.com/api/v1/bills";
 let cartUrl = "https://green-gnu-332746.hostingersite.com/api/v1/carts";
 ACCESS_TOKEN = "Bearer " + localStorage.getItem("ACCESS_TOKEN");
+let isChecked;
+let targetCustomer = 1;
+document.addEventListener("DOMContentLoaded", () => {
+  // Event listener for the checkbox
+  const whatsappCheckbox = document.getElementById("whatsappCheckbox");
+  whatsappCheckbox.addEventListener("change", () => {
+    isChecked = whatsappCheckbox.checked;
+  });
+
+  // Event listener for customers dropdown
+  const customersSelect = document.getElementById("customers");
+  customersSelect.addEventListener("click", () => {
+    let selectedValue =
+      customersSelect.options[customersSelect.selectedIndex].value;
+    targetCustomer = selectedValue;
+    console.log(targetCustomer);
+  });
+});
 
 let targetBillId;
 if (document.getElementById("bills")) {
@@ -39,10 +57,6 @@ async function saveBill() {
     if (!response.ok) {
       errorMessage();
       return;
-    } else {
-      console.log("response.ok == true");
-      successMessage();
-      sendWhatsappMessage();
     }
     if (response.status == 401) {
       window.location.href = "https://mosab.store/login";
@@ -77,12 +91,15 @@ async function saveBill() {
         if (!cartResponse.ok) {
           throw new Error(`HTTP error! status: ${cartResponse.status} `);
         }
+
+        sendWhatsappMessage();
       } catch (error) {
         console.error("Error:", error);
       }
       // update the stock in
     }
   }
+
   // cut the amount form stock
   localStorage.removeItem("cart");
   cart = [];
@@ -281,19 +298,10 @@ async function paymentUpdata(element, state) {
   }
   getBills();
 }
-
 function sendWhatsappMessage() {
-  console.log("first line");
-  document
-    .getElementById("whatsappCheckbox")
-    .dispatchEvent(new Event("change"));
-  let isChecked = document.getElementById("whatsappCheckbox").checked;
-  console.log(isChecked);
   if (!isChecked) {
-    console.log("!isChecked");
     return;
   }
-  console.log("isChecked");
   let sumoverAll = document.getElementById("overAll").value;
   let wpTitle;
   let wpAmount;
@@ -334,9 +342,8 @@ function sendWhatsappMessage() {
   let customersSelect = document.getElementById("customers");
   let selectedOption =
     customersSelect.options[customersSelect.selectedIndex].value;
-
   let customerPhone =
-    customers["data"].find((customer) => customer.id == selectedOption)
+    customers["data"].find((customer) => customer.id == targetCustomer)
       ?.phone || "";
   window.open("https://wa.me/" + "+966" + customerPhone + "?text=" + wpMessage);
 }
