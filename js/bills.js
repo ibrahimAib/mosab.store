@@ -13,11 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Event listener for customers dropdown
   const customersSelect = document.getElementById("customers");
-  customersSelect.addEventListener("click", () => {
+  customersSelect.addEventListener("change", () => {
     let selectedValue =
       customersSelect.options[customersSelect.selectedIndex].value;
     targetCustomer = selectedValue;
     console.log(targetCustomer);
+    
   });
 });
 
@@ -345,5 +346,6 @@ function sendWhatsappMessage() {
   let customerPhone =
     customers["data"].find((customer) => customer.id == targetCustomer)
       ?.phone || "";
+     //alert(targetCustomer)
   window.open("https://wa.me/" + "+966" + customerPhone + "?text=" + wpMessage);
 }

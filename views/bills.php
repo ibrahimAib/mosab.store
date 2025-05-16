@@ -36,7 +36,7 @@
 
                     <div>
                         <input type="checkbox" name="" id="showPaidBills">
-                        <span>اظهارالمدفوعة </span>
+                        <span>إظهار/إخفاء الفواتير المدفوعة:</span>
                     </div>
                 </div>
                 <hr>
