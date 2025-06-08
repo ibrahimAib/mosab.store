@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(43, 43, 43);
+            font-size: 15px;
+        }
+
+        .box {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 10px 0 10px;
+            margin-top: 20%;
+            margin-left: 50%;
+            margin-right: 50%;
+            background-color: rgba(209, 144, 144, 0.479);
+            height: 190px;
+            width: 220px;
+            color: white;
+            border-radius: 10px;
+        }
+
+        input {
+            border-radius: 5px;
+            height: 20px;
+            margin-bottom: 10px;
+        }
+
+        .btns {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btns button {
+            font-size: 20px;
+            color: darkslategray;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+
+        <label for="email">الايميل</label>
+        <input type="text" name="email" id="">
+
+        <label for="pwd">الرقم السري</label>
+        <input type="text" name="pwd" id="">
+        <div class="btns">
+            <button>تسجيل الدخول</button>
+            <button>انشاء حساب</button>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

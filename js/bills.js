@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
       customersSelect.options[customersSelect.selectedIndex].value;
     targetCustomer = selectedValue;
     console.log(targetCustomer);
-    
   });
 });
 
@@ -134,8 +133,17 @@ async function getBills() {
     window.location.href = "https://mosab.store/pages/login.html";
   }
   const data = await response.json();
-  bills = data["data"];
+  bills = data;
+  console.log(bills);
+
   renderBills();
+}
+function toggleDropdown(id) {
+  const rows = document.getElementsByClassName(`dropdown-${id}`);
+  for (let i = 0; i < rows.length; i++) {
+    rows[i].style.display =
+      rows[i].style.display === "none" ? "table-row" : "none";
+  }
 }
 
 function renderBills() {
@@ -151,13 +159,13 @@ function renderBills() {
             <th>حالة الدفع</th>
         </tr>
     </thead>`;
-  bills
+  bills["data"]
     .slice()
     .reverse()
     .forEach((bill) => {
       if (!checkbox.checked && bill["paid"] == 1) return;
       HTMLtable += `
-        <tr>
+        <tr class="main-td" onclick="toggleDropdown('${bill["id"]}')">
             <td><input type="text" class="text_intput text_input_small ${
               bill["customer"] == "العميل محذوف" ? "customer_deleted" : ""
             } " value="${bill["customer"]}" readonly></td>
@@ -186,8 +194,19 @@ function renderBills() {
             })" name="delete">
                             <span class="material-symbols-outlined icon_btn_Product mr-t">delete</span></button>
             </td>
-            </tr>`;
-      // <input class="text_intput text_input_small mr-t ${bill['paid'] == 0 ? 'btn-del' : 'btn-update'}" type="button" value="${bill['paid'] == 0 ? 'دفع': 'تم'}" onclick="paymentUpdata(${bill['id']},${bill['paid']})">
+            </tr>
+
+
+            ${bill["cart"]
+              .map(
+                (item) => `
+              <tr class="dropdown-${bill["id"]} dropdown-row" style="display: none;" >
+                <td > <span>${item.title}</span></td>
+                <td ><span>العدد: ${item.amount}</span></td>
+                <td ></td>
+              </tr>`
+              )
+              .join("")}`;
     });
   document.getElementById("bills").innerHTML += HTMLtable;
 }
@@ -346,6 +365,6 @@ function sendWhatsappMessage() {
   let customerPhone =
     customers["data"].find((customer) => customer.id == targetCustomer)
       ?.phone || "";
-     //alert(targetCustomer)
+  //alert(targetCustomer)
   window.open("https://wa.me/" + "+966" + customerPhone + "?text=" + wpMessage);
 }

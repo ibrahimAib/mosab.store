@@ -56,8 +56,8 @@
                         </div>
                     </div> -->
                 </div>
-
-                <hr>
+                <p id="whatsappCheckbox" display='none'></p>
+                <p id="customers" display='none'></p>
 
             </div>
         </div>

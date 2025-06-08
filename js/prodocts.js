@@ -105,33 +105,47 @@ function renderproducts() {
         </thead>`;
     for (i = 0; i < products.length; i++) {
       HTMLtable += `
-                <tr>
+                <tr class="${products[i]['stock'] == 0 ? 'background-red' : ''}">
                     <form id="updateProductForm${products[i]["id"]}">
                         <td>
-                            <input class="text_intput text_input_small" id="title${i}" type="text" value="${products[i]["title"]}" name="title">
+                            <input class="text_intput text_input_small" id="title${i}" type="text" value="${
+        products[i]["title"]
+      }" name="title">
                         </td>
 
                         <td>
-                            <input class="text_intput text_input_small  mr-t" id="sn${i}" type="number" value="${products[i]["sn"]}" name="sn">
+                            <input class="text_intput text_input_small  mr-t" id="sn${i}" type="number" value="${
+        products[i]["sn"]
+      }" name="sn">
                         </td>
 
                         <td>
-                            <input class="text_intput text_input_small  mr-t" id="category${i}" type="text" value="${products[i]["category"]}" name="category">
+                            <input class="text_intput text_input_small  mr-t" id="category${i}" type="text" value="${
+        products[i]["category"]
+      }" name="category">
                         </td>
 
                         <td>
-                            <input class="text_intput number_input_small mr-t" id="stock${i}" type="number" value="${products[i]["stock"]}" name="stock">
+                            <input class="text_intput number_input_small mr-t" id="stock${i}" type="number" value="${
+        products[i]["stock"]
+      }" name="stock">
                         </td>
 
                         <td>
-                            <input class="text_intput number_input_small mr-t" type="number" id="price${i}" value="${products[i]["price"]}" name="price">
+                            <input class="text_intput number_input_small mr-t" type="number" id="price${i}" value="${
+        products[i]["price"]
+      }" name="price">
                         </td>
 
                         <td>
-                            <button id="save${i}" class="text_intput text_input_small btn-pro btn-update" onclick="updateProductButton(${products[i]["id"]},${i})" name="update">
+                            <button id="save${i}" class="text_intput text_input_small btn-pro btn-update" onclick="updateProductButton(${
+        products[i]["id"]
+      },${i})" name="update">
                             <span class="material-symbols-outlined icon_btn_Product">check</span>
                             </button>
-                            <button class="text_intput text_input_small  btn-del btn-pro" onclick="deleteProductButton(${products[i]["id"]})" name="update">
+                            <button class="text_intput text_input_small  btn-del btn-pro" onclick="deleteProductButton(${
+                              products[i]["id"]
+                            })" name="update">
                             <span class="material-symbols-outlined icon_btn_Product ">delete</span></button>
                         </td>
                     </form>
