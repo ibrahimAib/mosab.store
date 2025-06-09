@@ -91,6 +91,7 @@ function add_product() {
 
 function renderproducts() {
   HTMLtable = "";
+  products.sort((a, b) => b.stock - a.stock);
   if (document.getElementById("products")) {
     HTMLtable = `    
         <thead>                    
@@ -105,7 +106,9 @@ function renderproducts() {
         </thead>`;
     for (i = 0; i < products.length; i++) {
       HTMLtable += `
-                <tr class="${products[i]['stock'] == 0 ? 'background-red' : ''}">
+                <tr class="${
+                  products[i]["stock"] == 0 ? "background-red" : ""
+                }">
                     <form id="updateProductForm${products[i]["id"]}">
                         <td>
                             <input class="text_intput text_input_small" id="title${i}" type="text" value="${
