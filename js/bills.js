@@ -134,7 +134,6 @@ async function getBills() {
   }
   const data = await response.json();
   bills = data;
-  console.log(bills);
 
   renderBills();
 }
@@ -164,6 +163,21 @@ function renderBills() {
     .reverse()
     .forEach((bill) => {
       if (!checkbox.checked && bill["paid"] == 1) return;
+      input = bill["createdAt"];
+      date = new Date(input);
+
+      year = date.getFullYear();
+      month = String(date.getMonth() + 1).padStart(2, "0");
+      day = String(date.getDate()).padStart(2, "0");
+
+      hours = date.getHours();
+      minutes = String(date.getMinutes()).padStart(2, "0");
+      ampm = hours >= 12 ? "PM" : "AM";
+
+      hours = hours % 12;
+      hours = hours ? hours : 12;
+
+      formatted = `${year}/${month}/${day} ${hours}:${minutes}${ampm}`;
       HTMLtable += `
         <tr class="main-td" onclick="toggleDropdown('${bill["id"]}')">
             <td><input type="text" class="text_intput text_input_small ${
@@ -195,7 +209,7 @@ function renderBills() {
                             <span class="material-symbols-outlined icon_btn_Product mr-t">delete</span></button>
             </td>
             </tr>
-
+                
 
             ${bill["cart"]
               .map(
@@ -203,8 +217,8 @@ function renderBills() {
               <tr class="dropdown-${bill["id"]} dropdown-row" style="display: none;" >
                 <td > <span>${item.title}</span></td>
                 <td ><span>العدد: ${item.amount}</span></td>
-                <td ></td>
-              </tr>`
+
+                <td > <span>${formatted}</span></td></tr>`
               )
               .join("")}`;
     });
