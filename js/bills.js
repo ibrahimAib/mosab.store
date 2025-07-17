@@ -20,6 +20,24 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(targetCustomer);
   });
 });
+function formatDate(data) {
+  const date = new Date(data);
+
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const year = date.getFullYear();
+
+  let hours = date.getHours();
+  const minutes = String(date.getMinutes()).padStart(2, "0");
+
+  const ampm = hours >= 12 ? "PM" : "AM";
+  hours = hours % 12;
+  hours = hours ? hours : 12; // 0 becomes 12
+  hours = String(hours).padStart(2, "0");
+
+  const formattedDate = `${hours}:${minutes} - ${day}/${month} `;
+  return formattedDate;
+}
 
 let targetBillId;
 if (document.getElementById("bills")) {
@@ -154,6 +172,7 @@ function renderBills() {
     <thead>
         <tr>
             <th>العميل</th>
+            <th>التاريخ</th>
             <th>المجموع</th>
             <th>حالة الدفع</th>
         </tr>
@@ -163,44 +182,40 @@ function renderBills() {
     .reverse()
     .forEach((bill) => {
       if (!checkbox.checked && bill["paid"] == 1) return;
-      input = bill["createdAt"];
-      date = new Date(input);
-
-      year = date.getFullYear();
-      month = String(date.getMonth() + 1).padStart(2, "0");
-      day = String(date.getDate()).padStart(2, "0");
-
-      hours = date.getHours();
-      minutes = String(date.getMinutes()).padStart(2, "0");
-      ampm = hours >= 12 ? "PM" : "AM";
-
-      hours = hours % 12;
-      hours = hours ? hours : 12;
-
-      formatted = `${year}/${month}/${day} ${hours}:${minutes}${ampm}`;
+      
       HTMLtable += `
         <tr class="main-td" onclick="toggleDropdown('${bill["id"]}')">
-            <td><input type="text" class="text_intput text_input_small ${
-              bill["customer"] == "العميل محذوف" ? "customer_deleted" : ""
-            } " value="${bill["customer"]}" readonly></td>
+            <td>
+              <input type="text" class="text_intput text_input_small ${
+                bill["customer"] == "العميل محذوف" ? "customer_deleted" : ""
+              } " value="${bill["customer"]}" readonly>
+            </td>
+
+            <td>
+              <input type="text" class="text_intput text_input_small ${
+                bill["customer"] == "العميل محذوف" ? "customer_deleted" : ""
+              } " value="${formatDate(bill["createdAt"])}" readonly>
+            </td>
+
             <td class="td_price">
                 <input class="text_intput number_input_small mr-t ${
                   bill["customer"] == "العميل محذوف" ? "customer_deleted" : ""
                 }" type="text" value="${bill["overAll"]}" readonly>
                 <span>ريال</span>
             </td>
+
             <td>
-            <button class="text_intput number_input_small mr-t ${
-              bill["paid"] == 0 ? "btn-del" : "btn-update"
-            } ${
-        bill["customer"] == "العميل محذوف" ? "customer_deleted" : ""
-      }" onclick="paymentUpdata(${bill["id"]},${bill["paid"]})">
-                <span id="waiting${
-                  bill["id"]
-                }" class="material-symbols-outlined icon_btn_bill " style="display: none;">schedule</span>
-                <span id="state${bill["id"]}" class="icon_btn_bill "> ${
-        bill["paid"] == 0 ? "دفع" : "تم"
-      }</span>
+            <button class="text_intput number_input_small mr-t 
+            ${bill["paid"] == 0 ? "btn-del" : "btn-update"} 
+            ${bill["customer"] == "العميل محذوف" ? "customer_deleted" : ""}"
+              onclick="paymentUpdata(${bill["id"]},${bill["paid"]})">
+
+                  <span id="waiting${bill["id"]}"
+                  class="material-symbols-outlined icon_btn_bill"
+                  style="display: none;">schedule</span>
+                  <span id="state${bill["id"]}" class="icon_btn_bill "> 
+                  ${bill["paid"] == 0 ? "دفع" : "تم"}
+                  </span>
             </button>
 
             <button class="text_intput text_input_small  btn-del  btn-pro mr-t delete-bill-btn" onclick="areYouShur(${
@@ -216,9 +231,7 @@ function renderBills() {
                 (item) => `
               <tr class="dropdown-${bill["id"]} dropdown-row" style="display: none;" >
                 <td > <span>${item.title}</span></td>
-                <td ><span>العدد: ${item.amount}</span></td>
-
-                <td > <span>${formatted}</span></td></tr>`
+                <td ><span>العدد: ${item.amount}</span></td>`
               )
               .join("")}`;
     });
